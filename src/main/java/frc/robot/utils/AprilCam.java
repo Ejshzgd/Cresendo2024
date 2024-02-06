@@ -1,6 +1,5 @@
 package frc.robot.utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,9 +31,12 @@ public class AprilCam {
     }
 
     public boolean hasDesiredTarget() {
-        //use the getDesiredTarget method to see if it returns null (not correct target) or not
-
-
+        ///use the getDesiredTarget method to see if it returns null (not correct target) or not
+        // if (getDesiredTarget.getFiducialId != null)
+        // {
+        //     return true;
+        // }
+        // return false;
     }
 
     public List<PhotonTrackedTarget> getTargets(){
@@ -44,25 +46,19 @@ public class AprilCam {
     public PhotonTrackedTarget getDesiredTarget(int desiredID){
         PhotonTrackedTarget target = result.getBestTarget();
         //get the arraylist of targets
+        for (PhotonTrackedTarget t: getTargets())
+        {
+            if (t.getFiducialId() == desiredID)
+            {
+                return t;
+            }
+            /////
+            if (t.getFiducialId() == -1)
+            {
+                return null;
+            }
+        }
 
-        //look throught the list for the one that has the desiredID
-
-
-        //return the desired target
-
-
-        //if you don't find the desired target, then return null
-        
-        // if(target == null) {
-        //     return -1;
-        // }
-
-    }
-
-    // public int getDesiredID(){
-
-    //     return target.getFiducialId();   
-    // }
     
     public int getBestID(){
         PhotonTrackedTarget target = result.getBestTarget();
